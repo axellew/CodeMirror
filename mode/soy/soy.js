@@ -396,7 +396,6 @@
       indent: function(state, textAfter, line) {
         var indent = state.indent, top = last(state.soyState);
         if (top == "comment") return CodeMirror.Pass;
-
         if (top == "literal") {
           if (/^\{\/literal}/.test(textAfter)) indent -= config.indentUnit;
         } else {
