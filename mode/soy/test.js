@@ -200,6 +200,14 @@
      '[keyword {fallbackmsg] [attribute desc]=[string "A message"][keyword }]',
      '  Old message',
      '[keyword {/msg}]');
+     
+  MT('literal-indent',
+     '[keyword {template] [def .name][keyword }]',
+     '  [keyword {literal}]',
+     '    Lerum',
+     '  [keyword {/literal}]',
+     '  Ipsum',
+     '[keyword {/template}]');
 
   MT('special-chars',
      '[keyword {sp}]',
