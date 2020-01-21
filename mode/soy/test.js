@@ -233,6 +233,17 @@
      '[keyword {lb}]',
      '[keyword {rb}]');
 
+  MT('let-list-literal',
+     '[keyword {let] [def $test]: [[[[[string \'a\'] ], [[[string \'b\'] ]] [keyword /}]');
+
+  MT('let-record-literal',
+     '[keyword {let] [def $test]: [keyword record]([def test]: [callee&variable bidiGlobalDir](), ' +
+         '[def foo]: [atom 5]) [keyword /}]');
+
+  MT('let-map-literal',
+     '[keyword {let] [def $test]: [keyword map]([def test]: [keyword map]([def inner]: [atom false]), ' +
+         '[def foo]: [string \'bar\']) [keyword /}]');
+
   MT('wrong-closing-tag',
      '[keyword {if] [atom true][keyword }]',
      '  Optional',
