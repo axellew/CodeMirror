@@ -156,7 +156,7 @@
       } else if (match = stream.match(/^\$([\w]+)/)) {
         return ref(state.variables, match[1], !state.lookupVariables);
       } else if (match = stream.match(/^\w+/)) {
-        return /^(?:as|and|or|not|in|for|if)$/.test(match[0]) ? "keyword" : null;
+        return /^(?:as|and|or|not|in)$/.test(match[0]) ? "keyword" : null;
       }
 
       stream.next();
@@ -320,7 +320,7 @@
             }
             if (stream.match(/^\w+/)) {
               state.soyState.push('param-type');
-              return "def property";
+              return "property";
             }
             stream.next();
             return null;
@@ -379,11 +379,18 @@
               state.lookupVariables = true;
               return null;
             }
+            if (stream.match(/for/)) {
+              state.soyState.push("var-def")
+              return "keyword";
+            } else if (stream.match(/in/)) {
+              state.lookupVariables = true;
+              return "keyword";
+            }
             return expression(stream, state);
 
           case "record-key":
             if (stream.match(/[\w]+/)) {
-              return "def";
+              return "property";
             }
             if (stream.match(/^[:]/)) {
               state.soyState.pop();
