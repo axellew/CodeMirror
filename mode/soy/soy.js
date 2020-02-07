@@ -156,7 +156,7 @@
       } else if (match = stream.match(/^\$([\w]+)/)) {
         return ref(state.variables, match[1], !state.lookupVariables);
       } else if (match = stream.match(/^\w+/)) {
-        return /^(?:as|and|or|not|in)$/.test(match[0]) ? "keyword" : null;
+        return /^(?:as|and|or|not|if)$/.test(match[0]) ? "keyword" : null;
       }
 
       stream.next();
